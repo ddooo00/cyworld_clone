@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <!-- 꾸며진 HTML 댓글 창 with CSS -->
+<style>
+  .comment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 20px;
+  }
+  .comment-form label {
+    margin-right: 10px;
+    font-weight: bold;
+    margin-right: auto;
+  }
+  .comment-form .name-input {
+    margin-bottom: 10px;
+    display: flex;
+    margin-right: 125px;
+    margin-top: 15px;
+  }
+  .comment-form .name-input label {
+    margin-right: 10px;
+    font-weight: bold;
+    flex-basis: 100px;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+  .comment-form .name-input input[type="text"] {
+    background-color: #F7F7F7;
+    border: 2px solid #D4D4D4;
+    font-family: 'Noto Sans KR', sans-serif;
+    padding: 5px;
+    flex-grow: 1;
+    border-radius: 5px;
+  }
+  .comment-form textarea {
+    margin-bottom: 10px;
+    background-color: #F7F7F7;
+    border: 2px solid #D4D4D4;
+    font-family: 'Noto Sans KR', sans-serif;
+    resize: none;
+    height: 100px;
+    width: 400px;
+    padding: 5px;
+    margin-right: auto;
+  }
+  .comment-form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+ .mypost{
+  width: 95%;
+        max-width: 500px;
+        margin: 20px auto 20px auto;
+ }
+     
+​
+      .mypost > button {
+        margin-top: 15px;
+      }
+​
+      .mycards {
+        width: 95%;
+        max-width: 500px;
+        margin: auto;
+      }
+​
+      .mycards > .card {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+</style>
+
+  <body>
+    <div>
+      <div class="wrapper">
+        <div class="wrapper__header">
+          <div class="contents__title">
+            <div class="title">대표작품</div>
+            <div class="subtitle">김혜수를 갓혜수로 만든 작품과 명대사</div>
+          </div>
+          <div class="divideLine"></div>
+          <iframe
+            src="{{ url_for('iframe_slide') }}"
+            style="border: none"
+          ></iframe>
+        </div>
+      </div>
+​
+      <div class="contents__body"></div>
+    </div>
+​
+    <div class="wrapper__body">
+      <div class="contents__title2">
+        <div class="title2"></div>
+        <div class="subtitle2"></div>
+      </div>
+      <div class="divideLine"></div>
+      <div class="comments">
+<!-- HTML 댓글 창 -->
+<div class="comment-form" method="post" action="comment.php">
+  <div class="name-input">
+    <label for="name">작품이름</label>
+    <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+  </div>
+  <label for="comment">명대사</label>
+  <textarea id="comment" name="comment" placeholder="대사를 입력하세요"></textarea>
+  <button onclick="save_comment()" type="button" class="btn btn-dark">
+    작성
+  </button>
+  
+</div>
+<div class="mycards" id="comment-list">
+  <div class="card">
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>대사</p>
+        <footer class="blockquote-footer">이름</footer>
+      </blockquote>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>대사</p>
+        <footer class="blockquote-footer">이름</footer>
+      </blockquote>
+    </div>
+  </div>
+  
+</div>
+</body>
+</html>
